@@ -1,0 +1,19 @@
+{
+  "name": "wikipedia-search",
+  "version": "1.0.0",
+  "description": "This uses the wikipedia API to search for pages",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stavo343/wikipedia-search.git"
+  },
+  "author": "stavo343",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stavo343/wikipedia-search/issues"
+  },
+  "homepage": "https://github.com/stavo343/wikipedia-search#readme"
+}

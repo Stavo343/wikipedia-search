@@ -1,0 +1,225 @@
+<html>
+<head>
+<title>Wikipedia Search</title>
+<style>
+body {
+  background: grey;
+  color: black;
+  overflow-x: hidden;
+}
+
+a {
+  color: black;
+  margin: auto;
+}
+
+.form-before {
+  width: 20%;
+  margin: 200px 40% 0px 40%;
+  text-align: center;
+}
+
+.form-after {
+  width: 20%;
+  margin: 20px 40% 0px 40%;
+  text-align: center;
+}
+
+#search {
+  border-radius: 10px;
+  color: black;
+  border: 3px solid black;
+  padding: 1%;
+  width: 100%;
+}
+
+.result {
+  width: 94%;
+  margin: 3%;
+  padding: 5px;
+  background: white;
+}
+
+.hidden {
+  display: none;
+}
+
+.anchor {
+  cursor: pointer;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+#plug {
+	padding: 3%;
+}
+
+</style>
+</head>
+<body>
+<div>
+  <form id="form" class="form-before">
+    <input id="search" type="search" placeholder="Search Wikipedia" name="Search"></input>
+    </br>
+    <a id="random" href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">Feeling Bored?</a>
+  </form>
+</div>
+<div id="result01" class="result hidden">
+  <a id="a01" target="_blank" class="anchor">
+    <h4 id="h401"></h4>
+    <p id="p01"></p>
+  </a>
+</div>
+<div id="result02" class="result hidden">
+  <a id="a02" target="_blank" class="anchor">
+    <h4 id="h402"></h4>
+    <p id="p02"></p>
+  </a>
+</div>
+<div id="result03" class="result hidden">
+  <a id="a03" target="_blank" class="anchor">
+    <h4 id="h403"></h4>
+    <p id="p03"></p>
+  </a>
+</div>
+<div id="result04" class="result hidden">
+  <a id="a04" target="_blank" class="anchor">
+    <h4 id="h404"></h4>
+    <p id="p04"></p>
+  </a>
+</div>
+<div id="result05" class="result hidden">
+  <a id="a05" target="_blank" class="anchor">
+    <h4 id="h405"></h4>
+    <p id="p05"></p>
+  </a>
+</div>
+<div id="result06" class="result hidden">
+  <a id="a06" target="_blank" class="anchor">
+    <h4 id="h406"></h4>
+    <p id="p06"></p>
+  </a>
+</div>
+<div id="result07" class="result hidden">
+  <a id="a07" target="_blank" class="anchor">
+    <h4 id="h407"></h4>
+    <p id="p07"></p>
+  </a>
+</div>
+<div id="result08" class="result hidden">
+  <a id="a08" target="_blank" class="anchor">
+    <h4 id="h408"></h4>
+    <p id="p08"></p>
+  </a>
+</div>
+<div id="result09" class="result hidden">
+  <a id="a09" target="_blank" class="anchor">
+    <h4 id="h409"></h4>
+    <p id="p09"></p>
+  </a>
+</div>
+<div id="result10" class="result hidden">
+  <a id="a10" target="_blank" class="anchor">
+    <h4 id="h410"></h4>
+    <p id="p10"></p>
+  </a>
+</div><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+$("#search").keypress(function(enter) {
+  if (enter.which == 13) {
+
+    var find = document.getElementById("search").value;
+
+    $.ajax({
+      url: "//en.wikipedia.org/w/api.php",
+      data: {
+        "action": "query",
+        "format": "json",
+        "prop": "extracts",
+        "pageids": "",
+        "generator": "search",
+        "formatversion": "2",
+        "exsentences": "1",
+        "exlimit": "10",
+        "exintro": 1,
+        "gsrsearch": find,
+        "gsrlimit": "10"
+      },
+      dataType: 'jsonp',
+      success: function(results) {
+
+        $("#form").removeClass("form-before").addClass("form-after");
+
+        var ref01 = "https://en.wikipedia.org/?curid=" + results.query.pages[0].pageid;
+        $("#result01").removeClass("hidden");
+        $("#h401").html(results.query.pages[0].title);
+        $("#p01").html(results.query.pages[0].extract);
+        $("#a01").attr("href", ref01);
+
+        var ref02 = "https://en.wikipedia.org/?curid=" + results.query.pages[1].pageid;
+        $("#result02").removeClass("hidden");
+        $("#h402").html(results.query.pages[1].title);
+        $("#p02").html(results.query.pages[1].extract);
+        $("#a02").attr("href", ref02);
+
+        var ref03 = "https://en.wikipedia.org/?curid=" + results.query.pages[2].pageid;
+        $("#result03").removeClass("hidden");
+        $("#h403").html(results.query.pages[2].title);
+        $("#p03").html(results.query.pages[2].extract);
+        $("#a03").attr("href", ref03);
+
+        var ref04 = "https://en.wikipedia.org/?curid=" + results.query.pages[3].pageid;
+        $("#result04").removeClass("hidden");
+        $("#h404").html(results.query.pages[3].title);
+        $("#p04").html(results.query.pages[3].extract);
+        $("#a04").attr("href", ref04);
+
+        var ref05 = "https://en.wikipedia.org/?curid=" + results.query.pages[4].pageid;
+        $("#result05").removeClass("hidden");
+        $("#h405").html(results.query.pages[4].title);
+        $("#p05").html(results.query.pages[4].extract);
+        $("#a05").attr("href", ref05);
+
+        var ref06 = "https://en.wikipedia.org/?curid=" + results.query.pages[5].pageid;
+        $("#result06").removeClass("hidden");
+        $("#h406").html(results.query.pages[5].title);
+        $("#p06").html(results.query.pages[5].extract);
+        $("#a06").attr("href", ref06);
+
+        var ref07 = "https://en.wikipedia.org/?curid=" + results.query.pages[6].pageid;
+        $("#result07").removeClass("hidden");
+        $("#h407").html(results.query.pages[6].title);
+        $("#p07").html(results.query.pages[6].extract);
+        $("#a07").attr("href", ref07);
+
+        var ref08 = "https://en.wikipedia.org/?curid=" + results.query.pages[7].pageid;
+        $("#result08").removeClass("hidden");
+        $("#h408").html(results.query.pages[7].title);
+        $("#p08").html(results.query.pages[7].extract);
+        $("#a08").attr("href", ref08);
+
+        var ref09 = "https://en.wikipedia.org/?curid=" + results.query.pages[8].pageid;
+        $("#result09").removeClass("hidden");
+        $("#h409").html(results.query.pages[8].title);
+        $("#p09").html(results.query.pages[8].extract);
+        $("#a09").attr("href", ref09);
+
+        var ref10 = "https://en.wikipedia.org/?curid=" + results.query.pages[9].pageid;
+        $("#result10").removeClass("hidden");
+        $("#h410").html(results.query.pages[9].title);
+        $("#p10").html(results.query.pages[9].extract);
+        $("#a10").attr("href", ref10);
+				
+				$("#plug").removeClass("hidden");
+
+      }
+    });
+    return false;
+  }
+});
+
+
+</script>
+</body>
+</html>
